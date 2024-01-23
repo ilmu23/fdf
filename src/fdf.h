@@ -16,7 +16,12 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
-# include <mlx.h>
+# ifdef LINUX
+#  include "mlx.h"
+# endif
+# ifndef LINUX
+#  include <mlx.h>
+# endif
 
 # define E_MAP 1
 # define PXLPFX "\e[1;36mfdf: putpixel: "

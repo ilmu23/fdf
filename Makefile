@@ -19,14 +19,22 @@ OBJDIR	=	obj
 LIBDIR	=	libft
 
 CC				=	cc
-cflags.common	=	-Wall -Wextra -Werror
+ifeq ($(shell uname),Linux)
+	cflags.common	=	-Wall -Wextra -Werror -D LINUX -Imlx-linux
+else
+	cflags.common	=	-Wall -Wextra -Werror
+endif
 cflags.debug	=	-g
 cflags.debugm	=	$(cflags.debug) -D DEBUG_MSG=1
 cflags.asan		=	$(cflags.debug) -fsanitize=address -static-libsan
 cflags.normal	=	
 CFLAGS			=	$(cflags.common) $(cflags.$(BUILD))
 
-LDFLAGS	=	-L$(LIBDIR) -lm -lmlx -framework OpenGL -framework AppKit -lft
+ifeq ($(shell uname),Linux)
+	LDFLAGS	=	-L$(LIBDIR) -Lmlx-linux -lmlx_Linux -lXext -lX11 -lm -lz -lft
+else
+	LDFLAGS	=	-L$(LIBDIR) -lm -lmlx -framework OpenGL -framework AppKit -lft
+endif
 
 LIBFT	=	$(LIBDIR)/libft.a
 
@@ -53,7 +61,7 @@ $(OBJDIR):
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@echo Compiling $@
-	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@make -C $(LIBDIR) clean --no-print-directory
