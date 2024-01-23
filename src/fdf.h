@@ -16,25 +16,19 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
-# include <mlx.h>
+# ifdef __LINUX__
+#  include "mlx.h"
+#  include "keys_linux.h"
+# endif
+# ifndef __LINUX__
+#  include <mlx.h>
+#  include "keys_macos.h"
+# endif
 
 # define E_MAP 1
 # define PXLPFX "\e[1;36mfdf: putpixel: "
 # define WIDTH 1920
 # define HEIGHT 1080
-
-// Keycodes
-# define KEY_ESC 53
-# define KEY_Q 12
-# define KEY_W 13
-# define KEY_E 14
-# define KEY_R 15
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_F 3
-# define KEY_Z 6
-# define KEY_X 7
 
 // Constants
 # define PI	3.14

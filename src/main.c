@@ -40,8 +40,8 @@ int	main(int argc, char **argv)
 			&img.llen, &img.endian);
 	frame.img = &img;
 	initframe(&frame);
-	mlx_hook(frame.win, 2, 0L, redraw, &frame);
-	mlx_hook(frame.win, 17, 0L, quit, &frame);
+	mlx_hook(frame.win, 2, (1L << 0), redraw, &frame);
+	mlx_hook(frame.win, 17, (1L << 0), quit, &frame);
 	mlx_loop_hook(frame.mlx, autorotate, &frame);
 	mlx_loop(frame.mlx);
 }
