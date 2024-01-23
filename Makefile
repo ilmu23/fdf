@@ -20,7 +20,7 @@ LIBDIR	=	libft
 
 CC				=	cc
 ifeq ($(shell uname),Linux)
-	cflags.common	=	-Wall -Wextra -Werror -D LINUX -Imlx-linux
+	cflags.common	=	-Wall -Wextra -Werror -D __LINUX__ -Imlx-linux
 else
 	cflags.common	=	-Wall -Wextra -Werror
 endif
