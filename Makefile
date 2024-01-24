@@ -6,7 +6,7 @@
 #    By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 14:05:22 by ivalimak          #+#    #+#              #
-#    Updated: 2024/01/24 22:00:50 by ivalimak         ###   ########.fr        #
+#    Updated: 2024/01/25 00:29:18 by ivalimak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,11 +42,13 @@ LIBFT	=	$(LIBDIR)/libft.a
 
 SRCS	=	$(SRCDIR)/main.c \
 			$(SRCDIR)/frame.c \
+			$(SRCDIR)/input.c \
 			$(SRCDIR)/actions.c \
 			$(SRCDIR)/rainbow.c \
 			$(SRCDIR)/color.c \
 			$(SRCDIR)/pixel.c \
 			$(SRCDIR)/init.c \
+			$(SRCDIR)/opt.c \
 			$(SRCDIR)/map.c
 
 OBJS	=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))

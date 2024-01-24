@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:48:19 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/24 18:20:13 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/24 23:43:56 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,20 @@ static void	drawline(int *pos1, int *pos2, int *heights, t_frame *frame);
 int	createframe(t_frame *frame)
 {
 	size_t	x;
+	clock_t	drawtime;
+	clock_t	start;
+	clock_t	end;
 
 	x = 0;
 	frame->xoffset = 0;
 	frame->yoffset = 0;
+	start = clock();
 	while (x < frame->map->height)
 		createline(frame, x++);
+	end = clock();
+	drawtime = end - start;
+	if (drawtime < CLOCKS_PER_SEC / frame->fpscap)
+		usleep(CLOCKS_PER_SEC / frame->fpscap - drawtime);
 	mlx_put_image_to_window(frame->mlx, frame->win, frame->img->img, 0, 0);
 	return (0);
 }

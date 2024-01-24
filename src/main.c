@@ -6,13 +6,12 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:12:53 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/24 23:28:12 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/24 23:44:52 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	initframe(t_frame *frame);
 static int	redraw(int keycode, void *param);
 static int	autorotate(void *param);
 static int	quit(t_frame *frame);
@@ -43,24 +42,6 @@ int	main(int argc, char **argv)
 	mlx_hook(frame.win, 17, (1L << 0), quit, &frame);
 	mlx_loop_hook(frame.mlx, autorotate, &frame);
 	mlx_loop(frame.mlx);
-}
-
-static void	initframe(t_frame *frame)
-{
-	frame->depth = 2;
-	frame->rotate = 0;
-	frame->zoomlvl = 1.0;
-	frame->rotation = 23.0;
-	frame->centerx = WIDTH / 2;
-	frame->centery = HEIGHT / 2;
-	initcolors(frame);
-	frame->vec_ax = -1 * AXIS_A * sin(frame->rotation / 180.0 * PI);
-	frame->vec_ay = AXIS_B * cos(frame->rotation / 180.0 * PI);
-	frame->vec_bx = AXIS_A * cos(frame->rotation / 180.0 * PI);
-	frame->vec_by = AXIS_B * sin(frame->rotation / 180.0 * PI);
-	frame->win = mlx_new_window(frame->mlx, WIDTH, HEIGHT, "fdf");
-	drawbackground(frame);
-	createframe(frame);
 }
 
 static int	redraw(int keycode, void *param)
