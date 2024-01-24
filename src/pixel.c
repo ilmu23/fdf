@@ -6,13 +6,15 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:58:28 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/22 12:30:17 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/23 22:01:09 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	drawbackground(t_img *img)
+static int	getcolor(t_frame *frame, int *color);
+
+void	drawbackground(t_frame *frame)
 {
 	size_t	x;
 	size_t	y;
@@ -22,16 +24,35 @@ void	drawbackground(t_img *img)
 	{
 		y = 0;
 		while (y < HEIGHT)
-			putpixel(img, x, y++, BGCOLOR);
+			putpixel(frame, x, y++, NULL);
 		x++;
 	}
 }
 
-void	putpixel(t_img *img, int x, int y, int color)
+void	putpixel(t_frame *frame, int x, int y, int *height)
 {
 	char	*dst;
+	int		color;
 
-	ft_debugmsg(PXLPFX, "Putting pixel at %d, %d (#%x)", x, y, color);
-	dst = img->addr + (y * img->llen + x * (img->bpp / 8));
+	color = BGCOLOR;
+	if (height)
+		color = getcolor(frame, height);
+	dst = frame->img->addr + (y * frame->img->llen + x * (frame->img->bpp / 8));
 	*(unsigned int *)dst = color;
+}
+
+static int	getcolor(t_frame *frame, int *height)
+{
+	int		color;
+	t_color	color1;
+	t_color	color2;
+
+	color = 0;
+	color1 = frame->color1;
+	color2 = frame->color2;
+	if (frame->floor && height[0] == 0 && height[1] == 0)
+		return (color << 24 | color1.r << 16 | color1.g << 8 | color1.b);
+	if (!frame->floor && height[0] == height[1])
+		return (color << 24 | color1.r << 16 | color1.g << 8 | color1.b);
+	return (color << 24 | color2.r << 16 | color2.g << 8 | color2.b);
 }

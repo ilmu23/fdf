@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:12:53 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/22 14:05:40 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/24 10:50:49 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,14 @@ static void	initframe(t_frame *frame)
 {
 	frame->depth = 2;
 	frame->rotate = 0;
-	frame->centerx = WIDTH / 2;
-	frame->centery = HEIGHT / 2;
 	frame->zoomlvl = 1.0;
 	frame->rotation = 23.0;
+	frame->centerx = WIDTH / 2;
+	frame->centery = HEIGHT / 2;
+	setcolor(&frame->color1, FGREEN);
+	setcolor(&frame->ogcolor1, FGREEN);
+	setcolor(&frame->color2, FRED);
+	setcolor(&frame->ogcolor2, FRED);
 	frame->vec_ax = -1 * AXIS_A * sin(frame->rotation / 180.0 * PI);
 	frame->vec_ay = AXIS_B * cos(frame->rotation / 180.0 * PI);
 	frame->vec_bx = AXIS_A * cos(frame->rotation / 180.0 * PI);
@@ -85,7 +89,7 @@ static int	redraw(int keycode, void *param)
 		togglefloor(param);
 	else if (keycode == KEY_ESC)
 		quit(param);
-	drawbackground(((t_frame *)param)->img);
+	drawbackground(param);
 	createframe(param);
 	return (1);
 }
@@ -95,7 +99,11 @@ static int	autorotate(void *param)
 	if (((t_frame *)param)->rotate)
 	{
 		rotate(param, '+');
-		drawbackground(((t_frame *)param)->img);
+		if (((t_frame *)param)->rotate == 2 || ((t_frame *)param)->rotate == 3)
+			updatecolors(param);
+		else if (((t_frame *)param)->rotate == 4)
+			rainbow(param, 0);
+		drawbackground(param);
 		createframe(param);
 	}
 	return (1);

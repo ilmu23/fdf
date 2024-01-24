@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 20:37:57 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/22 13:32:48 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/24 10:49:30 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,17 @@ void	togglefloor(t_frame *frame)
 
 void	togglerotate(t_frame *frame)
 {
-	if (frame->rotate)
-		frame->rotate = 0;
-	else
+	if (!frame->rotate)
 		frame->rotate = 1;
+	else if (frame->rotate == 1)
+		frame->rotate = 2;
+	else if (frame->rotate == 3)
+		frame->rotate = 4;
+	else
+	{
+		frame->rotate = 0;
+		rainbow(frame, 1);
+	}
 }
 
 void	zoom(t_frame *frame, char direction)
