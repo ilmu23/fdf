@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:14:11 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/22 13:31:46 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/24 11:01:23 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # endif
 
 # define E_MAP 1
-# define PXLPFX "\e[1;36mfdf: putpixel: "
 # define WIDTH 1920
 # define HEIGHT 1080
 
@@ -37,6 +36,11 @@
 
 // Colors
 # define BGCOLOR 0x00000000
+
+# define FRED 0x00FF0000
+# define FGREEN 0x0000FF00
+# define FBLUE 0x000000FF
+
 # define MAGENTA 0x00FC1A70
 # define PURPLE 0x00AF87FF
 # define GREEN 0x00A4E400
@@ -58,6 +62,13 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_color;
+
 typedef struct s_frame
 {
 	t_img	*img;
@@ -77,17 +88,30 @@ typedef struct s_frame
 	double	vec_by;
 	double	zoomlvl;
 	double	rotation;
+	t_color	color1;
+	t_color	color2;
+	t_color	ogcolor1;
+	t_color	ogcolor2;
 }	t_frame;
 
 // map.c
 t_map	*parsemap(char *fname);
 
+// color.c
+void	updatecolors(t_frame *frame);
+void	setcolor(t_color *color, int value);
+void	cpycolor(t_color *dst, t_color *src);
+int		getnewcolor(int c, int dc, int start, int end);
+
+// rainbow.c
+void	rainbow(t_frame *frame, char stop);
+
 // frame.c
 int		createframe(t_frame *frame);
 
 // pixel.c
-void	drawbackground(t_img *img);
-void	putpixel(t_img *img, int x, int y, int color);
+void	drawbackground(t_frame *frame);
+void	putpixel(t_frame *frame, int x, int y, int *height);
 
 // actions.c
 void	togglefloor(t_frame *frame);

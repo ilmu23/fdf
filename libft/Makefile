@@ -6,7 +6,7 @@
 #    By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 15:26:18 by ivalimak          #+#    #+#              #
-#    Updated: 2024/01/19 18:50:24 by ivalimak         ###   ########.fr        #
+#    Updated: 2024/01/24 11:15:00 by ivalimak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,11 @@ CC				=	cc
 cflags.common	=	-Wall -Wextra -Werror
 cflags.debug	=	-g
 cflags.debugm 	=	$(cflags.debug) -D DEBUG_MSG=1
-cflags.asan		=	$(cflags.debug) -fsanitize=address -static-libsan
+ifeq ($(shell uname),Linux)
+	cflags.asan		=	$(cflags.debug) -fsanitize=address
+else
+	cflags.asan		=	$(cflags.debug) -fsanitize=address -static-libsan
+endif
 cflags.normal	=	
 CFLAGS			=	$(cflags.common) $(cflags.$(BUILD))
 

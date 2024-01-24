@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:48:19 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/22 14:56:42 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/23 21:21:10 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	createline(t_frame *frame, size_t x);
 static void	calculatepos(t_frame *frame, int off_x, int off_y, int *pos);
 static void	drawline(int *pos1, int *pos2, int *color, t_frame *frame);
-static int	getcolor(int *color, int floor);
 
 int	createframe(t_frame *frame)
 {
@@ -83,7 +82,7 @@ static void	calculatepos(t_frame *frame, int x, int y, int *pos)
 	pos[1] = vecs[1] * x + vecs[3] * y - map[xy[0]][xy[1]] * depth + center[1];
 }
 
-static void	drawline(int *pos1, int *pos2, int *color, t_frame *frame)
+static void	drawline(int *pos1, int *pos2, int *height, t_frame *frame)
 {
 	double	i;
 	double	dx;
@@ -99,20 +98,10 @@ static void	drawline(int *pos1, int *pos2, int *color, t_frame *frame)
 	pos[1] = pos1[1];
 	while (i < len)
 	{
-		if (pos[0] >= 0 && pos[0] < WIDTH
-			&& pos[1] >= 0 && pos[1] < HEIGHT)
-			putpixel(frame->img, pos[0], pos[1], getcolor(color, frame->floor));
+		if (pos[0] >= 0 && pos[0] < WIDTH && pos[1] >= 0 && pos[1] < HEIGHT)
+			putpixel(frame, pos[0], pos[1], height);
 		pos[0] += dx / len;
 		pos[1] += dy / len;
 		i++;
 	}
-}
-
-static int	getcolor(int *color, int floor)
-{
-	if (floor && color[0] == 0 && color[1] == 0)
-		return (PURPLE);
-	if (!floor && color[0] == color[1])
-		return (PURPLE);
-	return (MAGENTA);
 }

@@ -1,5 +1,17 @@
-#ifndef KEYS_MACOS_H
-# define KEYS_MACOS_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keys_linux.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/23 21:15:10 by ivalimak          #+#    #+#             */
+/*   Updated: 2024/01/23 21:15:24 by ivalimak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef KEYS_LINUX_H
+# define KEYS_LINUX_H
 
 # define KEY_ESC 65307
 # define KEY_Q 113
