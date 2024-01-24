@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:14:11 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/24 11:01:23 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:17:25 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int		createframe(t_frame *frame);
 
 // pixel.c
 void	drawbackground(t_frame *frame);
-void	putpixel(t_frame *frame, int x, int y, int *height);
+void	putpixel(t_frame *frame, int x, int y, int *heights);
 
 // actions.c
 void	togglefloor(t_frame *frame);

@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:12:53 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/24 10:50:49 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:18:41 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ static void	initframe(t_frame *frame)
 	frame->rotation = 23.0;
 	frame->centerx = WIDTH / 2;
 	frame->centery = HEIGHT / 2;
-	setcolor(&frame->color1, FGREEN);
-	setcolor(&frame->ogcolor1, FGREEN);
-	setcolor(&frame->color2, FRED);
-	setcolor(&frame->ogcolor2, FRED);
+	setcolor(&frame->color1, PURPLE);
+	setcolor(&frame->ogcolor1, PURPLE);
+	setcolor(&frame->color2, MAGENTA);
+	setcolor(&frame->ogcolor2, MAGENTA);
 	frame->vec_ax = -1 * AXIS_A * sin(frame->rotation / 180.0 * PI);
 	frame->vec_ay = AXIS_B * cos(frame->rotation / 180.0 * PI);
 	frame->vec_bx = AXIS_A * cos(frame->rotation / 180.0 * PI);

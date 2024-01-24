@@ -6,13 +6,13 @@
 #    By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 14:05:22 by ivalimak          #+#    #+#              #
-#    Updated: 2024/01/24 11:14:52 by ivalimak         ###   ########.fr        #
+#    Updated: 2024/01/24 18:12:27 by ivalimak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fdf
 
-BUILD	=	normal
+BUILD	=	fast
 
 SRCDIR	=	src
 OBJDIR	=	obj
@@ -26,6 +26,7 @@ else
 	cflags.common	=	-Wall -Wextra -Werror
 	cflags.asan		=	$(cflags.debug) -fsanitize=address -static-libsan
 endif
+cflags.fast		=	-Ofast
 cflags.debug	=	-g
 cflags.debugm	=	$(cflags.debug) -D DEBUG_MSG=1
 cflags.normal	=	
