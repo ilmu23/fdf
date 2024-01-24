@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 21:11:14 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/24 22:35:07 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/24 23:27:00 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	checkinput(char *in);
 static int	get_next_color(int n);
+static int	get_color_value(void);
 
 void	initcolors(t_frame *frame)
 {
@@ -32,15 +33,16 @@ void	initcolors(t_frame *frame)
 
 static void	printcolors(void)
 {
-	ft_printf("  BLACK [OOOOOO]\n");
-	ft_printf("  WHITE [FFFFFF]\n");
-	ft_printf("  PURE RED [FF0000]\n");
-	ft_printf("  PURE GREEN [00FF00]\n");
-	ft_printf("  PURE BLUE [0000FF]\n");
-	ft_printf("  MAGENTA [FC1A70]\n");
-	ft_printf("  PURPLE [AF87FF]\n");
-	ft_printf("  GREEN [A4E400]\n");
-	ft_printf("  CYAN [62D8F1]\n");
+	ft_printf("  BLACK        [OOOOOO]\n");
+	ft_printf("  WHITE        [FFFFFF]\n");
+	ft_printf("  PURE RED     [FF0000]\n");
+	ft_printf("  PURE GREEN   [00FF00]\n");
+	ft_printf("  PURE BLUE    [0000FF]\n");
+	ft_printf("  MAGENTA      [FC1A70]\n");
+	ft_printf("  PURPLE       [AF87FF]\n");
+	ft_printf("  GREEN        [A4E400]\n");
+	ft_printf("  CYAN         [62D8F1]\n");
+	ft_printf("  CUSTOM       [??????]\n");
 	ft_printf("\n> ");
 }
 
@@ -64,6 +66,8 @@ static int	checkinput(char *in)
 		return (GREEN);
 	if (!ft_strncmp(in, "CYAN", 5))
 		return (CYAN);
+	if (!ft_strncmp(in, "CUSTOM", 7))
+		return (get_color_value());
 	return (0);
 }
 
@@ -86,4 +90,15 @@ static int	get_next_color(int n)
 	if (!color)
 		get_next_color(n);
 	return (color);
+}
+
+static int	get_color_value(void)
+{
+	char	*value;
+
+	ft_printf("%sEnter value\n\n> ", TERM_CLR);
+	value = ft_strtrim(ft_strupper(get_next_line(1)), "\n");
+	if (ft_strlen(value) != 6)
+		return (0);
+	return (ft_atox(value));
 }

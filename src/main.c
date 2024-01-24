@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:12:53 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/24 22:02:40 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/24 23:28:12 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static void	initframe(t_frame *frame)
 	frame->vec_bx = AXIS_A * cos(frame->rotation / 180.0 * PI);
 	frame->vec_by = AXIS_B * sin(frame->rotation / 180.0 * PI);
 	frame->win = mlx_new_window(frame->mlx, WIDTH, HEIGHT, "fdf");
+	drawbackground(frame);
 	createframe(frame);
 }
 
