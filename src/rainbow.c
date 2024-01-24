@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 10:30:27 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/24 11:02:43 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/24 22:04:32 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	rainbow(t_frame *frame, char stop)
 	{
 		init = 1;
 		phase = 1;
-		setcolor(&frame->color1, FRED);
-		setcolor(&frame->color2, FRED);
+		setcolor(&frame->color1, PRED);
+		setcolor(&frame->color2, PRED);
 	}
 	if (stop)
 	{
