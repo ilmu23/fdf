@@ -31,7 +31,7 @@ FdF is a program for drawing wireframe models.
 
 ### Windows
 
-**\   no**
+**no**
 
 ### Make options
 
