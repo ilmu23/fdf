@@ -6,7 +6,7 @@
 #    By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 14:05:22 by ivalimak          #+#    #+#              #
-#    Updated: 2024/01/24 18:12:27 by ivalimak         ###   ########.fr        #
+#    Updated: 2024/01/24 22:00:50 by ivalimak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS	=	$(SRCDIR)/main.c \
 			$(SRCDIR)/rainbow.c \
 			$(SRCDIR)/color.c \
 			$(SRCDIR)/pixel.c \
+			$(SRCDIR)/init.c \
 			$(SRCDIR)/map.c
 
 OBJS	=	$(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))

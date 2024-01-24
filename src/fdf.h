@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:14:11 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/24 18:17:25 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/24 22:04:54 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,21 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 
+// Output
+# define TERM_CLR "\e[1;1H\e[0J"
+
 // Constants
 # define PI	3.14
 # define AXIS_A 20
 # define AXIS_B 10
 
 // Colors
-# define BGCOLOR 0x00000000
+# define BLACK 0x00000000
+# define WHITE 0x00FFFFFF
 
-# define FRED 0x00FF0000
-# define FGREEN 0x0000FF00
-# define FBLUE 0x000000FF
+# define PRED 0x00FF0000
+# define PGREEN 0x0000FF00
+# define PBLUE 0x000000FF
 
 # define MAGENTA 0x00FC1A70
 # define PURPLE 0x00AF87FF
@@ -81,6 +85,7 @@ typedef struct s_frame
 	int		centery;
 	int		xoffset;
 	int		yoffset;
+	int		bgcolor;
 	double	depth;
 	double	vec_ax;
 	double	vec_ay;
@@ -96,6 +101,9 @@ typedef struct s_frame
 
 // map.c
 t_map	*parsemap(char *fname);
+
+// init.c
+void	initcolors(t_frame *frame);
 
 // color.c
 void	updatecolors(t_frame *frame);

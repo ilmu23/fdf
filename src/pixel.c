@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:58:28 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/23 22:01:09 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/24 21:49:49 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	putpixel(t_frame *frame, int x, int y, int *height)
 	char	*dst;
 	int		color;
 
-	color = BGCOLOR;
+	color = frame->bgcolor;
 	if (height)
 		color = getcolor(frame, height);
 	dst = frame->img->addr + (y * frame->img->llen + x * (frame->img->bpp / 8));
