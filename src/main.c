@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:12:53 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/24 23:44:52 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 00:35:24 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	t_frame	frame;
 	t_img	img;
 
-	if (argc < 2)
+	if (argc != 2)
 		return (1);
 	frame.map = parsemap(argv[1]);
 	if (!frame.map)
@@ -29,9 +29,6 @@ int	main(int argc, char **argv)
 		perror("fdf");
 		return (ft_return(E_MAP));
 	}
-	frame.floor = 0;
-	if (argc > 2)
-		frame.floor = ft_atoi(argv[2]);
 	frame.mlx = mlx_init();
 	img.img = mlx_new_image(frame.mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bpp,
