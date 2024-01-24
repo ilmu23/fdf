@@ -6,7 +6,7 @@
 #    By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 15:26:18 by ivalimak          #+#    #+#              #
-#    Updated: 2024/01/24 11:15:00 by ivalimak         ###   ########.fr        #
+#    Updated: 2024/01/24 23:03:47 by ivalimak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ cflags.normal	=
 CFLAGS			=	$(cflags.common) $(cflags.$(BUILD))
 
 SRCS	=	ft_atoi.c \
+			ft_atox.c \
 			ft_atol.c \
 			ft_atos.c \
 			ft_free.c \

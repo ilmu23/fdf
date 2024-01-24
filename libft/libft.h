@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:47:46 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/19 18:47:22 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/24 23:03:16 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ size_t	ft_atos(const char *s);
 char	*ft_itoa(int n);
 char	*ft_uitoa(unsigned int n);
 long	ft_atol(const char *s);
+int		ft_atox(const char *s);
 int		ft_atoi(const char *s);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
