@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:14:11 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/24 22:04:54 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 00:28:03 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
+# include <time.h>
 # ifdef __LINUX__
 #  include "mlx.h"
 #  include "keys_linux.h"
@@ -26,6 +27,7 @@
 # endif
 
 # define E_MAP 1
+# define E_INIT 2
 # define WIDTH 1920
 # define HEIGHT 1080
 
@@ -79,8 +81,9 @@ typedef struct s_frame
 	t_map	*map;
 	void	*mlx;
 	void	*win;
+	char	floor;
 	char	rotate;
-	int		floor;
+	long	fpscap;
 	int		centerx;
 	int		centery;
 	int		xoffset;
@@ -102,8 +105,21 @@ typedef struct s_frame
 // map.c
 t_map	*parsemap(char *fname);
 
+// opt.c
+void	printcoloropts(void);
+int		checkcoloropt(char *in);
+
 // init.c
+void	initframe(t_frame *frame);
 void	initcolors(t_frame *frame);
+void	initoptions(t_frame *frame);
+
+// input.c
+long	get_fpscap(void);
+char	get_floor(void);
+char	get_autorotate(void);
+int		get_next_color(int n);
+int		get_color_value(void);
 
 // color.c
 void	updatecolors(t_frame *frame);
