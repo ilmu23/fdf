@@ -62,3 +62,17 @@ its only argument
 ```
 
 ![42.fdf](https://github.com/ilmu23/fdf/raw/master/img/42.png)
+
+ACTION                                      | KEYBIND
+| :---:                                     | :---:
+Clockwise rotation                          | E
+Counter-clockwise rotation                  | Q
+Translate up                                | W
+Translate down                              | S
+Translate right                             | D
+Translate left                              | A
+Zoom in                                     | X
+Zoom out                                    | Z
+Toggle automatic rotation                   | R
+Toggle drawing flat color only at height 0  | F
+Quit                                        | Q
