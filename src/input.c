@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 23:46:05 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 00:31:47 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 00:42:26 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ long	get_fpscap(void)
 	char	*line;
 	size_t	cap;
 
-	ft_printf("%sSet FPS cap (0 for no cap) > ", TERM_CLR);
+	ft_printf("%sSet FPS cap > ", TERM_CLR);
 	line = ft_strtrim(get_next_line(1), "\n");
 	ft_printf("%s", TERM_CLR);
 	if (!line)
@@ -63,8 +63,9 @@ char	get_autorotate(void)
 
 int	get_next_color(int n)
 {
-	char	*line;
-	int		color;
+	char		*line;
+	int			color;
+	const int	defaults[3] = {PURPLE, MAGENTA, BLACK};
 
 	if (n == 1)
 		ft_printf("%sSelect flat color\n\n", TERM_CLR);
@@ -79,6 +80,8 @@ int	get_next_color(int n)
 		perror("fdf");
 		ft_exit(E_INIT);
 	}
+	if (!*line)
+		return (defaults[n - 1]);
 	if (!ft_strncmp(line, "BLACK", 6))
 		return (0);
 	color = checkcoloropt(line);
