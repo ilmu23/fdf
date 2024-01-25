@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:12:53 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 20:01:41 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 23:44:36 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,36 +56,6 @@ static int	redraw(int keycode, void *param)
 	createframe(param);
 	return (1);
 }
-/*
-static int	redraw(int keycode, void *param)
-{
-	if (keycode == KEY_E)
-		rotate(param, '+');
-	else if (keycode == KEY_Q)
-		rotate(param, '-');
-	else if (keycode == KEY_W)
-		translate(param, 'y', '-');
-	else if (keycode == KEY_A)
-		translate(param, 'x', '-');
-	else if (keycode == KEY_S)
-		translate(param, 'y', '+');
-	else if (keycode == KEY_D)
-		translate(param, 'x', '+');
-	else if (keycode == KEY_Z)
-		zoom(param, '-');
-	else if (keycode == KEY_X)
-		zoom(param, '+');
-	else if (keycode == KEY_R)
-		togglerotate(param);
-	else if (keycode == KEY_F)
-		togglefloor(param);
-	else if (keycode == KEY_C)
-		togglecolormode(param);
-	else if (keycode == KEY_ESC)
-		quit(param);
-	createframe(param);
-	return (1);
-}*/
 
 static int	autoupdate(void *param)
 {
