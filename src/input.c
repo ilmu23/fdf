@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 23:46:05 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 00:42:26 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:57:24 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ long	get_fpscap(void)
 		ft_exit(E_INIT);
 	}
 	if (!*line)
-		return (60);
+		return (120);
 	cap = ft_atol(line);
 	if (cap < 1)
 		return (LONG_MAX);

@@ -6,7 +6,7 @@
 #    By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/12 14:05:22 by ivalimak          #+#    #+#              #
-#    Updated: 2024/01/25 00:29:18 by ivalimak         ###   ########.fr        #
+#    Updated: 2024/01/25 17:29:05 by ivalimak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,11 @@ LIBFT	=	$(LIBDIR)/libft.a
 
 SRCS	=	$(SRCDIR)/main.c \
 			$(SRCDIR)/frame.c \
+			$(SRCDIR)/flash.c \
 			$(SRCDIR)/input.c \
+			$(SRCDIR)/input2.c \
 			$(SRCDIR)/actions.c \
+			$(SRCDIR)/actions2.c \
 			$(SRCDIR)/rainbow.c \
 			$(SRCDIR)/color.c \
 			$(SRCDIR)/pixel.c \

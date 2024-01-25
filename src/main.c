@@ -6,14 +6,14 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:12:53 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 15:28:11 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:58:30 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 static int	redraw(int keycode, void *param);
-static int	autorotate(void *param);
+static int	autoupdate(void *param);
 static int	quit(t_frame *frame);
 
 int	main(int argc, char **argv)
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	fdf_init(&frame, &img);
 	mlx_hook(frame.win, 2, (1L << 0), redraw, &frame);
 	mlx_hook(frame.win, 17, (1L << 0), quit, &frame);
-	mlx_loop_hook(frame.mlx, autorotate, &frame);
+	mlx_loop_hook(frame.mlx, autoupdate, &frame);
 	mlx_loop(frame.mlx);
 }
 
@@ -58,25 +58,40 @@ static int	redraw(int keycode, void *param)
 		togglerotate(param);
 	else if (keycode == KEY_F)
 		togglefloor(param);
+	else if (keycode == KEY_C)
+		togglecolormode(param);
 	else if (keycode == KEY_ESC)
 		quit(param);
-	drawbackground(param);
 	createframe(param);
 	return (1);
 }
 
-static int	autorotate(void *param)
+static int	autoupdate(void *param)
 {
-	if (((t_frame *)param)->rotate)
+	t_frame	*frame;
+	char	updates;
+
+	frame = param;
+	updates = 0;
+	if (frame->rotate)
 	{
 		rotate(param, '+');
-		if (((t_frame *)param)->rotate == 2 || ((t_frame *)param)->rotate == 3)
-			updatecolors(param);
-		else if (((t_frame *)param)->rotate == 4)
-			rainbow(param, 0);
-		drawbackground(param);
-		createframe(param);
+		updates++;
 	}
+	if (frame->colormode)
+	{
+		if (frame->colormode == 1)
+			flashcolor(&frame->color1, &frame->ogcolor1, 0);
+		else if (frame->colormode == 2)
+			flashcolor(&frame->color2, &frame->ogcolor2, 0);
+		else if (frame->colormode == 3)
+			updatecolors(frame, 0);
+		else
+			rainbow(frame, 0);
+		updates++;
+	}
+	if (updates)
+		createframe(frame);
 	return (1);
 }
 
