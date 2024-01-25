@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:32:18 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 17:53:57 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 23:40:47 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	togglecolormode(t_frame *frame)
 	else if (frame->colormode == 2)
 	{
 		cpycolor(&frame->color2, &frame->ogcolor2);
+		flashcolor(NULL, NULL, 1);
 		updatecolors(frame, 1);
 	}
 	else if (frame->colormode == 3)
@@ -35,8 +36,7 @@ void	togglecolormode(t_frame *frame)
 		cpycolor(&frame->color2, &frame->ogcolor2);
 		rainbow(NULL, 1);
 	}
-	if (frame->colormode < 4)
-		frame->colormode++;
-	else
+	frame->colormode++;
+	if (frame->colormode > 4)
 		frame->colormode = 0;
 }
