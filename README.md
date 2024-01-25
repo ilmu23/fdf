@@ -1,5 +1,7 @@
 # FdF
 
+![42.fdf](https://github.com/ilmu23/fdf/raw/master/img/42.png)
+
 ## Overview
 
 FdF is a program for drawing wireframe models.
@@ -61,8 +63,6 @@ its only argument
 ./fdf maps/42.fdf
 ```
 
-![42.fdf](https://github.com/ilmu23/fdf/raw/master/img/42.png)
-
 ACTION                                      | KEYBIND
 | :---:                                     | :---:
 Clockwise rotation                          | E
@@ -76,3 +76,9 @@ Zoom out                                    | Z
 Toggle automatic rotation                   | R
 Toggle drawing flat color only at height 0  | F
 Quit                                        | Q
+
+## Known ~~Issues~~ Features
+
+Sometimes the translate keys are flipped. I have no idea
+what causes that shit, but I'll just pretend like its
+a feature.
