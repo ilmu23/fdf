@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:12:53 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 00:35:24 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:28:11 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,7 @@ int	main(int argc, char **argv)
 		perror("fdf");
 		return (ft_return(E_MAP));
 	}
-	frame.mlx = mlx_init();
-	img.img = mlx_new_image(frame.mlx, WIDTH, HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bpp,
-			&img.llen, &img.endian);
-	frame.img = &img;
-	initframe(&frame);
+	fdf_init(&frame, &img);
 	mlx_hook(frame.win, 2, (1L << 0), redraw, &frame);
 	mlx_hook(frame.win, 17, (1L << 0), quit, &frame);
 	mlx_loop_hook(frame.mlx, autorotate, &frame);

@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:14:11 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 00:28:03 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:31:03 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_img
 	char	*addr;
 	int		bpp;
 	int		llen;
-	int		endian;
+	int		end;
 }	t_img;
 
 typedef struct s_color
@@ -74,6 +74,8 @@ typedef struct s_color
 	int	g;
 	int	b;
 }	t_color;
+
+# ifdef __LINUX__
 
 typedef struct s_frame
 {
@@ -102,6 +104,39 @@ typedef struct s_frame
 	t_color	ogcolor2;
 }	t_frame;
 
+# endif
+
+# ifndef __LINUX__
+
+typedef struct s_frame
+{
+	t_img	*img;
+	t_map	*map;
+	void	*mlx;
+	void	*win;
+	char	floor;
+	char	rotate;
+	int		centerx;
+	int		centery;
+	int		xoffset;
+	int		yoffset;
+	int		bgcolor;
+	double	depth;
+	double	vec_ax;
+	double	vec_ay;
+	double	vec_bx;
+	double	vec_by;
+	double	zoomlvl;
+	double	rotation;
+	size_t	fpscap;
+	t_color	color1;
+	t_color	color2;
+	t_color	ogcolor1;
+	t_color	ogcolor2;
+}	t_frame;
+
+# endif
+
 // map.c
 t_map	*parsemap(char *fname);
 
@@ -110,9 +145,8 @@ void	printcoloropts(void);
 int		checkcoloropt(char *in);
 
 // init.c
-void	initframe(t_frame *frame);
+void	fdf_init(t_frame *frame, t_img *img);
 void	initcolors(t_frame *frame);
-void	initoptions(t_frame *frame);
 
 // input.c
 long	get_fpscap(void);

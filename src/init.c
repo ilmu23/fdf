@@ -6,13 +6,13 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 21:11:14 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 00:23:59 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:27:56 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	initframe(t_frame *frame)
+void	fdf_init(t_frame *frame, t_img *img)
 {
 	frame->depth = 2;
 	initcolors(frame);
@@ -27,7 +27,11 @@ void	initframe(t_frame *frame)
 	frame->vec_ay = AXIS_B * cos(frame->rotation / 180.0 * PI);
 	frame->vec_bx = AXIS_A * cos(frame->rotation / 180.0 * PI);
 	frame->vec_by = AXIS_B * sin(frame->rotation / 180.0 * PI);
+	frame->mlx = mlx_init();
 	frame->win = mlx_new_window(frame->mlx, WIDTH, HEIGHT, "fdf");
+	img->img = mlx_new_image(frame->mlx, WIDTH, HEIGHT);
+	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->llen, &img->end);
+	frame->img = img;
 	drawbackground(frame);
 	createframe(frame);
 }
