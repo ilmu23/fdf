@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:12:53 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 23:44:36 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/26 01:21:50 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	autoupdate(void *param)
 	updates = 0;
 	if (frame->rotate)
 	{
-		rotate(param, KEY_E);
+		rotate(param, 0);
 		updates++;
 	}
 	if (frame->colormode)
