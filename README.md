@@ -46,7 +46,6 @@ The available build targets are
 
 BUILD   | CFLAGS                        | Effect
 | :---: | :---:                         | :---:
-------- | ----------------------------- | ------------------------
 normal  | -Wall -Wextra -Werror         | None
 fast    | normal + -Ofast               | Compiler optimizations
 debug   | normal + -g                   | Debug symbols
