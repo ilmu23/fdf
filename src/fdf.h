@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:14:11 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 17:44:19 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 19:59:59 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,9 +184,9 @@ void	putpixel(t_frame *frame, int x, int y, int *heights);
 // actions.c
 void	togglefloor(t_frame *frame);
 void	togglerotate(t_frame *frame);
-void	zoom(t_frame *frame, char direction);
-void	rotate(t_frame *frame, char direction);
-void	translate(t_frame *frame, char axis, char direction);
+void	zoom(t_frame *frame, int keycode);
+void	rotate(t_frame *frame, int keycode);
+void	translate(t_frame *frame, int keycode);
 
 // actions2.c
 void	togglecolormode(t_frame *frame);
