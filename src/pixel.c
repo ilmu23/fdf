@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:58:28 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 17:56:43 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 23:23:47 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,9 @@ void	putpixel(t_frame *frame, int x, int y, int *height)
 
 static int	getcolor(t_frame *frame, int *height)
 {
-	int		color;
 	t_color	color1;
 	t_color	color2;
 
-	color = 0;
 	color1 = frame->color1;
 	color2 = frame->color2;
 	if (frame->floor && height[0] == 0 && height[1] == 0)
