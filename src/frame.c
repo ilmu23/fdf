@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:48:19 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/24 23:43:56 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:49:08 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	createframe(t_frame *frame)
 	frame->xoffset = 0;
 	frame->yoffset = 0;
 	start = clock();
+	drawbackground(frame);
 	while (x < frame->map->height)
 		createline(frame, x++);
 	end = clock();

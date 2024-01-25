@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 21:11:14 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 15:27:56 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:28:49 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	fdf_init(t_frame *frame, t_img *img)
 	frame->floor = get_floor();
 	frame->fpscap = get_fpscap();
 	frame->rotate = get_autorotate();
+	frame->colormode = get_colormode();
 	frame->zoomlvl = 1.0;
 	frame->rotation = 23.0;
 	frame->centerx = WIDTH / 2;
@@ -32,7 +33,6 @@ void	fdf_init(t_frame *frame, t_img *img)
 	img->img = mlx_new_image(frame->mlx, WIDTH, HEIGHT);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->llen, &img->end);
 	frame->img = img;
-	drawbackground(frame);
 	createframe(frame);
 }
 

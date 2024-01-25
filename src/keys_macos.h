@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 21:15:04 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/23 21:15:06 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:31:00 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 # define KEY_F 3
 # define KEY_Z 6
 # define KEY_X 7
+# define KEY_C 8
 
 #endif

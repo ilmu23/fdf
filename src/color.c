@@ -6,13 +6,13 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1624/01/23 21:43:18 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/24 10:59:39 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:56:25 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	updatecolors(t_frame *frame)
+void	updatecolors(t_frame *frame, char init)
 {
 	static t_color	start;
 	static t_color	end;
@@ -20,7 +20,7 @@ void	updatecolors(t_frame *frame)
 	static int		dg;
 	static int		db;
 
-	if (frame->rotate == 2)
+	if (init == 1)
 	{
 		end = frame->color1;
 		start = frame->color2;
@@ -30,7 +30,7 @@ void	updatecolors(t_frame *frame)
 		frame->color1.r -= dr / 2;
 		frame->color1.g -= dg / 2;
 		frame->color1.b -= db / 2;
-		frame->rotate = 3;
+		return ;
 	}
 	frame->color1.r = getnewcolor(frame->color1.r, dr, start.r, end.r);
 	frame->color1.g = getnewcolor(frame->color1.g, dg, start.g, end.g);
@@ -54,6 +54,11 @@ void	cpycolor(t_color *dst, t_color *src)
 	dst->r = src->r;
 	dst->g = src->g;
 	dst->b = src->b;
+}
+
+int	colortohex(t_color *color)
+{
+	return (0 << 24 | color->r << 16 | color->g << 8 | color->b);
 }
 
 int	getnewcolor(int c, int dc, int start, int end)

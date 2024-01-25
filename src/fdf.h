@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:14:11 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 15:31:03 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:44:19 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_frame
 	void	*win;
 	char	floor;
 	char	rotate;
+	char	colormode;
 	long	fpscap;
 	int		centerx;
 	int		centery;
@@ -116,6 +117,7 @@ typedef struct s_frame
 	void	*win;
 	char	floor;
 	char	rotate;
+	char	colormode;
 	int		centerx;
 	int		centery;
 	int		xoffset;
@@ -142,6 +144,7 @@ t_map	*parsemap(char *fname);
 
 // opt.c
 void	printcoloropts(void);
+void	printcolormodes(void);
 int		checkcoloropt(char *in);
 
 // init.c
@@ -155,11 +158,18 @@ char	get_autorotate(void);
 int		get_next_color(int n);
 int		get_color_value(void);
 
+// input2.c
+char	get_colormode(void);
+
 // color.c
-void	updatecolors(t_frame *frame);
+void	updatecolors(t_frame *frame, char init);
 void	setcolor(t_color *color, int value);
 void	cpycolor(t_color *dst, t_color *src);
+int		colortohex(t_color *color);
 int		getnewcolor(int c, int dc, int start, int end);
+
+// flash.c
+void	flashcolor(t_color *color, t_color *end, char stop);
 
 // rainbow.c
 void	rainbow(t_frame *frame, char stop);
@@ -177,5 +187,8 @@ void	togglerotate(t_frame *frame);
 void	zoom(t_frame *frame, char direction);
 void	rotate(t_frame *frame, char direction);
 void	translate(t_frame *frame, char axis, char direction);
+
+// actions2.c
+void	togglecolormode(t_frame *frame);
 
 #endif

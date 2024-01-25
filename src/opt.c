@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 23:51:39 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 00:22:43 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:54:45 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,16 @@ void	printcoloropts(void)
 	ft_printf("  GREEN        [A4E400]\n");
 	ft_printf("  CYAN         [62D8F1]\n");
 	ft_printf("  CUSTOM       [??????]\n");
+	ft_printf("\n> ");
+}
+
+void	printcolormodes(void)
+{
+	ft_printf("  Static colors        (0)\n");
+	ft_printf("  Flash flat color     (1)\n");
+	ft_printf("  Flash slope color    (2)\n");
+	ft_printf("  Cycle between colors (3)\n");
+	ft_printf("  Rainbow              (4)\n");
 	ft_printf("\n> ");
 }
 

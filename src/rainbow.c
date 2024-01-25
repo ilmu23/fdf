@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 10:30:27 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/24 22:04:32 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:26:35 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	rainbow(t_frame *frame, char stop)
 	if (stop)
 	{
 		init = 0;
-		cpycolor(&frame->color1, &frame->ogcolor1);
-		cpycolor(&frame->color2, &frame->ogcolor2);
 		return ;
 	}
 	if (phase == 0 && frame->color1.r == 255)
