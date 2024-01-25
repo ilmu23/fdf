@@ -45,6 +45,7 @@ make BUILD=debug
 The available build targets are
 
 BUILD   | CFLAGS                        | Effect
+| :---: | :---:                         | :---:
 ------- | ----------------------------- | ------------------------
 normal  | -Wall -Wextra -Werror         | None
 fast    | normal + -Ofast               | Compiler optimizations
@@ -60,3 +61,5 @@ its only argument
 ```bash
 ./fdf maps/42.fdf
 ```
+
+![42.fdf](https://github.com/ilmu23/fdf/raw/master/img/42.png)
