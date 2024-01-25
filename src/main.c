@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:12:53 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 17:58:30 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 20:01:41 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,27 @@ int	main(int argc, char **argv)
 
 static int	redraw(int keycode, void *param)
 {
+	if (keycode == KEY_E || keycode == KEY_Q)
+		rotate(param, keycode);
+	else if (keycode == KEY_W || keycode == KEY_A
+		|| keycode == KEY_S || keycode == KEY_D)
+		translate(param, keycode);
+	else if (keycode == KEY_Z || keycode == KEY_X)
+		zoom(param, keycode);
+	else if (keycode == KEY_R)
+		togglerotate(param);
+	else if (keycode == KEY_F)
+		togglefloor(param);
+	else if (keycode == KEY_C)
+		togglecolormode(param);
+	else if (keycode == KEY_ESC)
+		quit(param);
+	createframe(param);
+	return (1);
+}
+/*
+static int	redraw(int keycode, void *param)
+{
 	if (keycode == KEY_E)
 		rotate(param, '+');
 	else if (keycode == KEY_Q)
@@ -64,7 +85,7 @@ static int	redraw(int keycode, void *param)
 		quit(param);
 	createframe(param);
 	return (1);
-}
+}*/
 
 static int	autoupdate(void *param)
 {
@@ -75,7 +96,7 @@ static int	autoupdate(void *param)
 	updates = 0;
 	if (frame->rotate)
 	{
-		rotate(param, '+');
+		rotate(param, KEY_E);
 		updates++;
 	}
 	if (frame->colormode)

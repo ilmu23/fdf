@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 20:37:57 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/01/25 17:30:58 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/01/25 20:02:51 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	togglerotate(t_frame *frame)
 		frame->rotate = 1;
 }
 
-void	zoom(t_frame *frame, char direction)
+void	zoom(t_frame *frame, int keycode)
 {
-	if (direction == '+')
+	if (keycode == KEY_X)
 	{
 		frame->depth *= 1.2;
 		frame->vec_ax *= 1.2;
@@ -50,9 +50,9 @@ void	zoom(t_frame *frame, char direction)
 	}
 }
 
-void	rotate(t_frame *frame, char direction)
+void	rotate(t_frame *frame, int keycode)
 {
-	if (direction == '+')
+	if (keycode == KEY_E)
 		frame->rotation += 1;
 	else
 		frame->rotation -= 1;
@@ -66,20 +66,23 @@ void	rotate(t_frame *frame, char direction)
 	frame->vec_by *= frame->zoomlvl;
 }
 
-void	translate(t_frame *frame, char axis, char direction)
+void	translate(t_frame *frame, int keycode)
 {
-	if (axis == 'x')
+	int	zoomoffset;
+
+	zoomoffset = 10 * frame->zoomlvl;
+	if (keycode == KEY_A || keycode == KEY_D)
 	{
-		if (direction == '+' && frame->centerx < INT_MAX)
-			frame->centerx += (10 * frame->zoomlvl) + 5;
-		else if (frame->centerx > INT_MIN)
-			frame->centerx -= (10 * frame->zoomlvl) + 5;
+		if (keycode == KEY_D && frame->centerx < INT_MAX - zoomoffset - 5)
+			frame->centerx += zoomoffset + 5;
+		else if (frame->centerx > INT_MIN + zoomoffset + 5)
+			frame->centerx -= zoomoffset + 5;
 	}
 	else
 	{
-		if (direction == '+' && frame->centery < INT_MAX)
-			frame->centery += (10 * frame->zoomlvl) + 5;
-		else if (frame->centery > INT_MIN)
-			frame->centery -= (10 * frame->zoomlvl) + 5;
+		if (keycode == KEY_S && frame->centery < INT_MAX - zoomoffset - 5)
+			frame->centery += zoomoffset + 5;
+		else if (frame->centery > INT_MIN - zoomoffset - 5)
+			frame->centery -= zoomoffset + 5;
 	}
 }
