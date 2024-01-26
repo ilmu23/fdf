@@ -12,30 +12,51 @@
 
 #include "fdf.h"
 
+static void	createlines(t_frame *frame, size_t xoffset);
 static void	createline(t_frame *frame, size_t x);
 static void	calculatepos(t_frame *frame, int off_x, int off_y, int *pos);
 static void	drawline(int *pos1, int *pos2, int *heights, t_frame *frame);
 
 int	createframe(t_frame *frame)
 {
-	size_t	x;
+	int		status;
+	pid_t	pids[0];
 	clock_t	drawtime;
 	clock_t	start;
 	clock_t	end;
 
-	x = 0;
 	frame->xoffset = 0;
 	frame->yoffset = 0;
 	start = clock();
 	drawbackground(frame);
-	while (x < frame->map->height)
-		createline(frame, x++);
+	pids[0] = fork();
+	if (!pids[0])
+		createlines(frame, 0);
+	pids[1] = fork();
+	if (!pids[1])
+		createlines(frame, 1);
+	waitpid(pids[0], &status, 0);
+	waitpid(pids[1], &status, 0);
 	end = clock();
 	drawtime = end - start;
+	dprintf(2, "Frame rendered in %ld\n", drawtime);
 	if (drawtime < CLOCKS_PER_SEC / frame->fpscap)
 		usleep(CLOCKS_PER_SEC / frame->fpscap - drawtime);
 	mlx_put_image_to_window(frame->mlx, frame->win, frame->img->img, 0, 0);
 	return (0);
+}
+
+static void	createlines(t_frame *frame, size_t xoffset)
+{
+	size_t	x;
+
+	x = 0;
+	while (x + xoffset < frame->map->height)
+	{
+		createline(frame, x);
+		x += 2;
+	}
+	exit(0);
 }
 
 static void	createline(t_frame *frame, size_t x)

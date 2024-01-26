@@ -13,10 +13,11 @@
 #ifndef FDF_H
 # define FDF_H
 # include "libft.h"
-# include <fcntl.h>
-# include <stdio.h>
 # include <math.h>
 # include <time.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <sys/wait.h>
 # ifdef __LINUX__
 #  include "mlx.h"
 #  include "keys_linux.h"
