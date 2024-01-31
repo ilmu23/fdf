@@ -76,7 +76,7 @@ Zoom out                                    | Z
 Toggle automatic rotation                   | R
 Toggle drawing flat color only at height 0  | F
 Cycle color effect                          | C
-Quit                                        | Q
+Quit                                        | ESC
 
 ## Known ~~Issues~~ Features
 
